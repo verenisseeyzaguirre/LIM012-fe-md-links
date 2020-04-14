@@ -358,7 +358,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 ------------------------------------------------------
 
 El boilerplate contiene una estructura de archivos como punto de partida así como toda la configuración de dependencias:
-
+```text
 .
 ├── README.md
 ├── package.json
@@ -371,3 +371,4 @@ El boilerplate contiene una estructura de archivos como punto de partida así co
    └── data.spec.js
 
 directory: 3 file: 6
+```
