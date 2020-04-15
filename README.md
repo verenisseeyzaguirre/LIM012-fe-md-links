@@ -356,13 +356,14 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 
 
 ------------------------------------------------------
-1.- Diagrama de flujo
+### 1.- Diagrama de flujo
 Link: https://drive.google.com/file/d/1izWgVGrqkthps1Pl089fPhMZcNhxnsuc/view?usp=sharing
 
 <img src="https://drive.google.com/file/d/1izWgVGrqkthps1Pl089fPhMZcNhxnsuc/preview" width="640" height="480">
 
-2.- Boilerplate
-El boilerplate contiene una estructura de archivos como punto de partida así como toda la configuración de dependencias:
+### 2.- Boilerplate
+El boilerplate contiene una estructura de archivos como punto 
+de partida así como toda la configuración de dependencias:
 ```text
 .
 ├── README.md
@@ -376,4 +377,94 @@ El boilerplate contiene una estructura de archivos como punto de partida así co
    └── data.spec.js
 
 directory: 3 file: 6
+```
+
+### 3. Testeos
+```text
+const mdLinks = require('../dist/mdLinks.js');
+
+const returnNoMd = 'No es un archivo markdown';
+
+const returnWithoutOptions = [
+    {
+      href: 'http://algo.com/2/3/',
+      text: 'Link a algo',
+      file: './some/example.md',
+    },
+    {
+      href: 'https://otra-cosa.net/algun-doc.html',
+      text: 'algún doc',
+      file: './some/example.md',
+    },
+    {
+      href: 'http://google.com/',
+      text: 'Google',
+      file: './some/example.md',
+    },
+  ];
+
+  const returnValidate = [
+    {
+      href: 'http://algo.com/2/3/',
+      text: 'Link a algo',
+      file: './some/example.md',
+      status: 200,
+      ok: 'ok',
+    },
+    {
+      href: 'https://otra-cosa.net/algun-doc.html',
+      text: 'algún doc',
+      file: './some/example.md',
+      status: 404,
+      ok: 'fail',
+    },
+    {
+      href: 'http://google.com/',
+      text: 'Google',
+      file: './some/example.md',
+      status: 301,
+      ok: 'ok',
+    },
+  ];
+
+  const returnStats = [
+    {
+      Total: 3,
+      Unique: 3,
+    },
+  ];
+
+  const returnValidateStats = [
+    {
+      Total: 3,
+      Unique: 3,
+      Broken: 1,
+    },
+  ];
+
+describe('md-links', () => {
+  it('is a function', () => {
+    expect(typeof mdLinks).toBe('function');
+  });
+
+  it('retorna el elemento encontrado por su nombre exacto', () => {
+    expect(mdLinks ./some/example.doc).toEqual(returnNoMd);
+  });
+
+  it('retorna el elemento encontrado por su nombre exacto', () => {
+    expect(mdLinks ./some/example.md).toEqual(returnWithoutOptions);
+  });
+
+  it('retorna el elemento encontrado por su nombre exacto', () => {
+    expect(mdLinks ./some/example.md --validate).toEqual(returnValidate);
+  });
+
+  it('retorna el elemento encontrado por su nombre exacto', () => {
+    expect(mdLinks ./some/example.md --stats).toEqual(returnStats);
+  });
+
+  it('retorna el elemento encontrado por su nombre exacto', () => {
+    expect(mdLinks ./some/example.md --stats --validate).toEqual(returnValidateStats);
+  });
+});
 ```
