@@ -359,7 +359,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 1.- Diagrama de flujo
 Link: https://drive.google.com/file/d/1izWgVGrqkthps1Pl089fPhMZcNhxnsuc/view?usp=sharing
 
-<iframe src="https://drive.google.com/file/d/1izWgVGrqkthps1Pl089fPhMZcNhxnsuc/preview" width="640" height="480"></iframe>
+<img src="https://drive.google.com/file/d/1izWgVGrqkthps1Pl089fPhMZcNhxnsuc/preview" width="640" height="480">
 
 2.- Boilerplate
 El boilerplate contiene una estructura de archivos como punto de partida así como toda la configuración de dependencias:
