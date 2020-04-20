@@ -357,9 +357,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 
 ------------------------------------------------------
 ### 1.- Diagrama de flujo
-Link: https://drive.google.com/file/d/1izWgVGrqkthps1Pl089fPhMZcNhxnsuc/view?usp=sharing
-
-<img src="https://drive.google.com/file/d/1izWgVGrqkthps1Pl089fPhMZcNhxnsuc/preview" width="640" height="480">
+Link: https://drive.google.com/file/d/1LaGPdy1CPY-qRd0b7gfzMzHnT8BGBSqK/view?usp=sharing
 
 ### 2.- Boilerplate
 El boilerplate contiene una estructura de archivos como punto 
@@ -447,23 +445,23 @@ describe('md-links', () => {
     expect(typeof mdLinks).toBe('function');
   });
 
-  it('retorna el elemento encontrado por su nombre exacto', () => {
+  it('retorna ...', () => {
     expect(mdLinks ./some/example.doc).toEqual(returnNoMd);
   });
 
-  it('retorna el elemento encontrado por su nombre exacto', () => {
+  it('retorna...', () => {
     expect(mdLinks ./some/example.md).toEqual(returnWithoutOptions);
   });
 
-  it('retorna el elemento encontrado por su nombre exacto', () => {
+  it('retorna ...', () => {
     expect(mdLinks ./some/example.md --validate).toEqual(returnValidate);
   });
 
-  it('retorna el elemento encontrado por su nombre exacto', () => {
+  it('retorna ...', () => {
     expect(mdLinks ./some/example.md --stats).toEqual(returnStats);
   });
 
-  it('retorna el elemento encontrado por su nombre exacto', () => {
+  it('retorna ...', () => {
     expect(mdLinks ./some/example.md --stats --validate).toEqual(returnValidateStats);
   });
 });
