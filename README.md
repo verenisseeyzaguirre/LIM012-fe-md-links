@@ -435,7 +435,7 @@ describe('md-links', () => {
   });
   
   it('retorna el array de objetos con 3 atributos si el archivo markdown contiente links', () => {
-    expect(mdLinks('./some/example1.md')).toEqual(null);
+    expect(mdLinks('./some/example1.md')).toBeNull();
   });
 
   it('retorna el array de objetos con 3 atributos si el archivo markdown contiente links', () => {
