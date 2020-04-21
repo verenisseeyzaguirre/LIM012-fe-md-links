@@ -379,7 +379,7 @@ directory: 3 file: 6
 
 ### 3. Testeos
 ```text
-const mdLinks = require('../dist/mdLinks.js');
+import { mdLinks } from '../dist/mdLinks.js';
 
 const returnNoMd = 'No es un archivo markdown';
 
@@ -425,6 +425,32 @@ const returnWithoutOptions = [
     },
   ];
 
+describe('md-links', () => {
+  it('is a function', () => {
+    expect(typeof mdLinks).toBe('function');
+  });
+
+  it('resuelve si es un archivo markdown', () => {
+    expect(mdLinks('./some/example.doc')).toEqual(returnNoMd);
+  });
+  
+  it('retorna el array de objetos con 3 atributos si el archivo markdown contiente links', () => {
+    expect(mdLinks('./some/example1.md')).toEqual(null);
+  });
+
+  it('retorna el array de objetos con 3 atributos si el archivo markdown contiente links', () => {
+    expect(mdLinks('./some/example.md')).toEqual(returnWithoutOptions);
+  });
+
+  it('retorna el array de objetos con 5 atributos, si el archivo markdown contiente links', () => {
+    expect(mdLinks('./some/example.md', { validate:true })).toEqual(returnValidate);
+  });
+  
+});
+
+-------
+Borrador de CLI
+
   const returnStats = [
     {
       Total: 3,
@@ -439,20 +465,8 @@ const returnWithoutOptions = [
       Broken: 1,
     },
   ];
-
-describe('md-links', () => {
-  it('is a function', () => {
-    expect(typeof mdLinks).toBe('function');
-  });
-
-  it('retorna ...', () => {
-    expect(mdLinks ./some/example.doc).toEqual(returnNoMd);
-  });
-
-  it('retorna...', () => {
-    expect(mdLinks ./some/example.md).toEqual(returnWithoutOptions);
-  });
-
+  
+ describe('md-links', () => { 
   it('retorna ...', () => {
     expect(mdLinks ./some/example.md --validate).toEqual(returnValidate);
   });
@@ -464,5 +478,6 @@ describe('md-links', () => {
   it('retorna ...', () => {
     expect(mdLinks ./some/example.md --stats --validate).toEqual(returnValidateStats);
   });
-});
+  
+  });
 ```
