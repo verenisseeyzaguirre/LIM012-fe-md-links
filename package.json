@@ -1,0 +1,33 @@
+{
+  "name": "lim012-fe-md-links",
+  "version": "1.0.0",
+  "description": "libreria y cli",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verenisseeyzaguirre/LIM012-fe-md-links.git"
+  },
+  "author": "Claudia E",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/verenisseeyzaguirre/LIM012-fe-md-links/issues"
+  },
+  "homepage": "https://github.com/verenisseeyzaguirre/LIM012-fe-md-links#readme",
+  "devDependencies": {
+    "jest": "^25.4.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "fs": "0.0.1-security",
+    "marked": "^1.0.0",
+    "node-fetch": "^2.6.0",
+    "path": "^0.12.7"
+  }
+}
