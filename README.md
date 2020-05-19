@@ -353,3 +353,131 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 - [Comprendiendo Promesas en Js](https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1)
 - [Pill de recursión - video](https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s)
 - [Pill de recursión - repositorio](https://github.com/merunga/pildora-recursion)
+
+
+------------------------------------------------------
+### 1.- Diagrama de flujo
+Link: https://drive.google.com/file/d/1LaGPdy1CPY-qRd0b7gfzMzHnT8BGBSqK/view?usp=sharing
+
+### 2.- Boilerplate
+El boilerplate contiene una estructura de archivos como punto 
+de partida así como toda la configuración de dependencias:
+```text
+.
+├── README.md
+├── package.json
+├── src
+|  ├── index.js
+|  ├── run.js
+├── dist
+|  ├── mdLinks.js
+└── test
+   └── data.spec.js
+
+directory: 3 file: 6
+```
+
+### 3. Testeos
+```text
+import { mdLinks } from '../dist/mdLinks.js';
+
+const returnNoMd = 'No es un archivo markdown';
+
+const returnWithoutOptions = [
+    {
+      href: 'http://algo.com/2/3/',
+      text: 'Link a algo',
+      file: './some/example.md',
+    },
+    {
+      href: 'https://otra-cosa.net/algun-doc.html',
+      text: 'algún doc',
+      file: './some/example.md',
+    },
+    {
+      href: 'http://google.com/',
+      text: 'Google',
+      file: './some/example.md',
+    },
+  ];
+
+  const returnValidate = [
+    {
+      href: 'http://algo.com/2/3/',
+      text: 'Link a algo',
+      file: './some/example.md',
+      status: 200,
+      ok: 'ok',
+    },
+    {
+      href: 'https://otra-cosa.net/algun-doc.html',
+      text: 'algún doc',
+      file: './some/example.md',
+      status: 404,
+      ok: 'fail',
+    },
+    {
+      href: 'http://google.com/',
+      text: 'Google',
+      file: './some/example.md',
+      status: 301,
+      ok: 'ok',
+    },
+  ];
+
+describe('md-links', () => {
+  it('is a function', () => {
+    expect(typeof mdLinks).toBe('function');
+  });
+
+  it('resuelve si es un archivo markdown', () => {
+    expect(mdLinks('./some/example.doc')).toEqual(returnNoMd);
+  });
+  
+  it('retorna el array de objetos con 3 atributos si el archivo markdown contiente links', () => {
+    expect(mdLinks('./some/example1.md')).toBeNull();
+  });
+
+  it('retorna el array de objetos con 3 atributos si el archivo markdown contiente links', () => {
+    expect(mdLinks('./some/example.md')).toEqual(returnWithoutOptions);
+  });
+
+  it('retorna el array de objetos con 5 atributos, si el archivo markdown contiente links', () => {
+    expect(mdLinks('./some/example.md', { validate:true })).toEqual(returnValidate);
+  });
+  
+});
+
+-------
+Borrador de CLI
+
+  const returnStats = [
+    {
+      Total: 3,
+      Unique: 3,
+    },
+  ];
+
+  const returnValidateStats = [
+    {
+      Total: 3,
+      Unique: 3,
+      Broken: 1,
+    },
+  ];
+  
+ describe('md-links', () => { 
+  it('retorna ...', () => {
+    expect(mdLinks ./some/example.md --validate).toEqual(returnValidate);
+  });
+
+  it('retorna ...', () => {
+    expect(mdLinks ./some/example.md --stats).toEqual(returnStats);
+  });
+
+  it('retorna ...', () => {
+    expect(mdLinks ./some/example.md --stats --validate).toEqual(returnValidateStats);
+  });
+  
+  });
+```
