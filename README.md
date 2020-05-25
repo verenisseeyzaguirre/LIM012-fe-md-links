@@ -266,7 +266,7 @@ pendientes de tu proyecto anterior.
 - [x] Testeo asíncrono
 - [x] Uso de librerias de Mock
 - [x] Mocks manuales
-- [] Testeo para multiples Sistemas Operativos
+- [ ] Testeo para multiples Sistemas Operativos
 
 ### Git y Github
 - [ ] Organización en Github
@@ -358,7 +358,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 ------------------------------------------------------
 ### 1.- Diagrama de flujo
 Link: https://drive.google.com/file/d/1LaGPdy1CPY-qRd0b7gfzMzHnT8BGBSqK/view?usp=sharing
-![DF](/readme-img/df.jpg)
+![Diagrama de flujo de la función](/readme-img/df.jpg)
 
 ### 2.- Boilerplate
 El boilerplate contiene una estructura de archivos como punto 
@@ -378,7 +378,7 @@ de partida así como toda la configuración de dependencias:
 directory: 3 file: 6
 ```
 
-### 3. Testeos
+### 3. Testeos iniciales
 ```text
 import { mdLinks } from '../dist/mdLinks.js';
 
@@ -450,35 +450,27 @@ describe('md-links', () => {
 });
 
 -------
-Borrador de CLI
-
-  const returnStats = [
-    {
-      Total: 3,
-      Unique: 3,
-    },
-  ];
-
-  const returnValidateStats = [
-    {
-      Total: 3,
-      Unique: 3,
-      Broken: 1,
-    },
-  ];
-  
- describe('md-links', () => { 
-  it('retorna ...', () => {
-    expect(mdLinks ./some/example.md --validate).toEqual(returnValidate);
-  });
-
-  it('retorna ...', () => {
-    expect(mdLinks ./some/example.md --stats).toEqual(returnStats);
-  });
-
-  it('retorna ...', () => {
-    expect(mdLinks ./some/example.md --stats --validate).toEqual(returnValidateStats);
-  });
-  
-  });
 ```
+### 4. CLI usage
+```text
+   4.1 Instalación
+   Para hacer uso del CLI es necesario instalarlo via npm install --global verenisseeyzaguirre/LIM012-fe-md-links.
+   4.2 Opciones de uso
+    4.2.1 md-links path
+    Cuando se ejecuta el comando md-links y luego el 'path' que puede ser una ruta absoluta o relativa de un directorio o de un archivo, al presionar enter, de encontrarse links contenidos en el archivos o archivos imprimirá 3 atributos: ruta del archivo, link y nombre del link.
+    ![mdlinks con path](/readme-img/path.jpg)    
+    4.2.2 md-links path --validate
+    A lo revisado anteriormente se puede agregar el flag '--validate' se obtiene 2 atributos adicionales de cada link: ok/fail y status. 
+    ![mdlinks con validate](/readme-img/validate.jpg)  
+    4.2.3 md-links path --stats
+    Otra opción es insertar el flag '--stats', aquí imprimirá la cantidad de links encontrados en 'total' y links diferentes en 'unique'
+    ![mdlinks con stats](/readme-img/stats.jpg)
+    4.2.4 md-links path --validate --stats
+    Se puede combinar los flag anteriores y obtener adicionalmente, los links que no se pueden abrir en 'broken'.
+    ![mdlinks con validate y stats](/readme-img/validatestats.jpg)
+  4.3 Consideraciones técnica
+  * En ésta versión solo se puede ejecutar en el sistema operativo Windows.
+  * De utilizar algún flag distinto a lo descrito en el apartado 4.2, imprimirá lo mencionado en 4.2.1, no muestra un HELP de soporte.
+  * No hay un control y manejo de errores.
+```
+
