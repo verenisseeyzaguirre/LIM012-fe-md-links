@@ -1,24 +1,18 @@
 const path = require('path');
 const fs = require('fs');
 const marked = require('marked');
-const fetch = require('node-fetch'); //previamente instalar npm install node-fetch --save
-
+const fetch = require('node-fetch'); // previamente instalar npm install node-fetch --save
 // la ruta es absoluta?
 const pathAbsolute = (routePath) => path.isAbsolute(routePath);
-
 // retorna la ruta absoluta
 const getAbsolute = (routePath) => (pathAbsolute(routePath) ? routePath : path.resolve(routePath));
-
 // es un archivo?
 const isFile = (routePath) => fs.statSync(routePath).isFile();
-
 // extension del archivo
 const fileExtension = (routePath) => path.extname(routePath);
-
 // contenido del directorio en array
 const directoryContent = (routePath) => fs.readdirSync(routePath);
-
-// retorna las ruta dentro de un array solo con archivos .md
+// retorna las rutas dentro de un array solo con archivos .md
 const filesMD = (routePath) => {
   let arrayFilesMD = [];
   const absolutePath = getAbsolute(routePath);
@@ -27,7 +21,7 @@ const filesMD = (routePath) => {
   } else {
     directoryContent(routePath).forEach((element) => {
       const elementRoute = path.join(absolutePath, element);
-      const directoryFilesMD = filesMD(elementRoute); //recursivo
+      const directoryFilesMD = filesMD(elementRoute); // recursivo
       arrayFilesMD = arrayFilesMD.concat(directoryFilesMD);
     });
   }
@@ -37,7 +31,8 @@ const filesMD = (routePath) => {
 // lee el path
 const readDocumentMD = (document) => fs.readFileSync(document, 'utf-8');
 
-//  extrae links de los archivos .md, luego se almacena en un array de objetos (con las 3 propiedades de los links)
+//  extrae links de los archivos .md, luego se almacena en un array de objetos
+// (con las 3 propiedades de los links)
 const getLinks = (routePath) => {
   const arrayLinks = [];
   const renderer = new marked.Renderer();
@@ -50,7 +45,7 @@ const getLinks = (routePath) => {
       };
       arrayLinks.push(objLink);
     };
-    marked(readDocumentMD(file), { renderer });  // averiguar
+    marked(readDocumentMD(file), { renderer });// averiguar
   });
   return arrayLinks;
 };
@@ -65,7 +60,7 @@ const isValidated = (route) => {
     linkValidated.push(
       fetch(element.href)
         .then((reply) => {
-          if (reply.status >= 200 && reply.status < 400) message = 'ok';        
+          if (reply.status >= 200 && reply.status < 400) message = 'ok';
           if (reply.status >= 400) message = 'fail';
           const object = {
             href: element.href,

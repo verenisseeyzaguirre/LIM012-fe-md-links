@@ -6,9 +6,10 @@
   "directories": {
     "test": "test"
   },
+  
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test": "jest --verbose --coverage"
+  
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,11 @@
   },
   "homepage": "https://github.com/verenisseeyzaguirre/LIM012-fe-md-links#readme",
   "devDependencies": {
-    "jest": "^25.4.0"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "fetch-mock": "^9.10.1",
+    "jest": "^25.5.2"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -29,5 +34,8 @@
     "marked": "^1.0.0",
     "node-fetch": "^2.6.0",
     "path": "^0.12.7"
+  },
+  "bin": {
+    "md-links": "./clifx.js"
   }
 }
