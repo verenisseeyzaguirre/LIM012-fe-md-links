@@ -452,7 +452,6 @@ describe('md-links', () => {
 -------
 ```
 ### 4. CLI usage
-```text
    4.1 Instalación
    Para hacer uso del CLI es necesario instalarlo via npm install --global verenisseeyzaguirre/LIM012-fe-md-links.
    4.2 Opciones de uso
@@ -472,5 +471,5 @@ describe('md-links', () => {
   * En ésta versión solo se puede ejecutar en el sistema operativo Windows.
   * De utilizar algún flag distinto a lo descrito en el apartado 4.2, imprimirá lo mencionado en 4.2.1, no muestra un HELP de soporte.
   * No hay un control y manejo de errores.
-```
+
 
