@@ -461,23 +461,23 @@ describe('md-links', () => {
 
     4.2.1 md-links path
     Cuando se ejecuta el comando md-links y luego el 'path' que puede ser una ruta absoluta o relativa de un directorio o de un archivo, al presionar enter, de encontrarse links contenidos en el archivos o archivos imprimirá 3 atributos: ruta del archivo, link y nombre del link.
-    ![mdlinks con path](/readme-img/path.jpg)    
+  ![mdlinks con path](/readme-img/path.jpg)    
 
 
     4.2.2 md-links path --validate
     A lo revisado anteriormente se puede agregar el flag '--validate' se obtiene 2 atributos adicionales de cada link: ok/fail y status. 
-    ![mdlinks con validate](/readme-img/validate.jpg)  
+  ![mdlinks con validate](/readme-img/validate.jpg)  
 
 
     4.2.3 md-links path --stats
     Otra opción es insertar el flag '--stats', aquí imprimirá la cantidad de links encontrados en 'total' y links diferentes en 'unique'
-    ![mdlinks con stats](/readme-img/stats.jpg)
+  ![mdlinks con stats](/readme-img/stats.jpg)
 
 
     4.2.4 md-links path --validate --stats
     Se puede combinar los flag anteriores y obtener adicionalmente, los links que no se pueden abrir en 'broken'.
-    ![mdlinks con validate y stats](/readme-img/validatestats.jpg)
-
+  ![mdlinks con validate y stats](/readme-img/validatestats.jpg)
+    
 
   4.3 Consideraciones técnica
   * En ésta versión solo se puede ejecutar en el sistema operativo Windows.
