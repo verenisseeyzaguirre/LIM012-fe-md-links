@@ -1,27 +1,35 @@
 const fetchMock = require('../__mocks__/node-fetch.js');
 
-const funcion = require('../fx');
-
-// const data = 0;
+const {
+  pathAbsolute,
+  getAbsolute,
+  isFile,
+  fileExtension,
+  directoryContent,
+  filesMD,
+  readDocumentMD,
+  getLinks,
+  isValidated,
+} = require('../fx');
 
 const pathAbs = 'C:\\Users\\REET-PC\\Documents\\Claudia\\laboratoria\\LIM012-fe-md-links\\prueba';
 const pathRel = './prueba';
 describe('pathAbsolute()', () => {
   it('Debería retornar false si la ruta es relativa', () => {
-    expect(funcion.pathAbsolute(pathRel)).toBe(false);
+    expect(pathAbsolute(pathRel)).toBe(false);
   });
 
   it('Debería retornar true si la ruta es absoluta', () => {
-    expect(funcion.pathAbsolute(pathAbs)).toBe(true);
+    expect(pathAbsolute(pathAbs)).toBe(true);
   });
 });
 
 describe('getAbsolute()', () => {
   it('Debería retornar una ruta absoluta al pasarle una ruta relativa', () => {
-    expect(funcion.getAbsolute(pathRel)).toBe(pathAbs);
+    expect(getAbsolute(pathRel)).toBe(pathAbs);
   });
   it('Debería retornar una ruta absoluta al pasarle una ruta absoluta', () => {
-    expect(funcion.getAbsolute(pathAbs)).toBe(pathAbs);
+    expect(getAbsolute(pathAbs)).toBe(pathAbs);
   });
 });
 
@@ -29,28 +37,28 @@ const dirPath = 'C:\\Users\\REET-PC\\Documents\\Claudia\\laboratoria\\LIM012-fe-
 const filePath = 'C:\\Users\\REET-PC\\Documents\\Claudia\\laboratoria\\LIM012-fe-md-links\\prueba\\README.md';
 describe('isFile()', () => {
   it('Debería retornar true si es un archivo', () => {
-    expect(funcion.isFile(filePath)).toBe(true);
+    expect(isFile(filePath)).toBe(true);
   });
 
   it('Debería retornar false si es un directorio', () => {
-    expect(funcion.isFile(dirPath)).toBe(false);
+    expect(isFile(dirPath)).toBe(false);
   });
 });
 
 describe('fileExtension()', () => {
   it('Debería retornar la extensión del archivo al encontrar el primer punto', () => {
-    expect(funcion.fileExtension(filePath)).toBe('.md');
+    expect(fileExtension(filePath)).toBe('.md');
   });
 
   it('Debería retornar una cadena vacía al no encontrar una extension', () => {
-    expect(funcion.fileExtension(dirPath)).toBe('');
+    expect(fileExtension(dirPath)).toBe('');
   });
 });
 
 const arrayOutput = ['carpeta1', 'prueba.md', 'README.md'];
 describe('directoryContent()', () => {
   it('Debería retornar un array con el contenido del directorio', () => {
-    expect(funcion.directoryContent(pathRel)).toEqual(arrayOutput);
+    expect(directoryContent(pathRel)).toEqual(arrayOutput);
   });
 });
 
@@ -63,11 +71,11 @@ const arrayOutputFilesMD = [
 const pathWithoutFilesMD = 'C:\\Users\\REET-PC\\Documents\\Claudia\\laboratoria\\LIM012-fe-md-links\\prueba\\carpeta1\\carpeta3';
 describe('filesMD()', () => {
   it('Debería retornar un array de rutas con archivos .md', () => {
-    expect(funcion.filesMD(pathRel)).toEqual(arrayOutputFilesMD);
+    expect(filesMD(pathRel)).toEqual(arrayOutputFilesMD);
   });
 
   it('Debería retornar un array vacío al no encontrar archivos .md', () => {
-    expect(funcion.filesMD(pathWithoutFilesMD)).toEqual([]);
+    expect(filesMD(pathWithoutFilesMD)).toEqual([]);
   });
 });
 
@@ -75,7 +83,7 @@ const readFile = 'C:\\Users\\REET-PC\\Documents\\Claudia\\laboratoria\\LIM012-fe
 const contentFileMD = 'Imprimiendo el contenido del archivo';
 describe('readDocumentMD()', () => {
   it('Debería retornar el contenido del archivo', () => {
-    expect(funcion.readDocumentMD(readFile)).toEqual(contentFileMD);
+    expect(readDocumentMD(readFile)).toEqual(contentFileMD);
   });
 });
 
@@ -92,7 +100,7 @@ const objectLinkAtrib = [
   }];
 describe('getLinks()', () => {
   it('Debería retornar un array de objetos con 3 atributos', () => {
-    expect(funcion.getLinks('./prueba/carpeta1/carpeta1_prueba.md')).toEqual(objectLinkAtrib);
+    expect(getLinks('./prueba/carpeta1/carpeta1_prueba.md')).toEqual(objectLinkAtrib);
   });
 });
 
@@ -116,7 +124,7 @@ describe('isValidated()', () => {
     .mock('https://es.wikipedia.org/wiki/Markdown', 200)
     .mock('http://google.com.pe/str', 404);
   it('Debería retornar un array de objetos con 5 propiedades:file, href, text, status y ok', (done) => {
-    funcion.isValidated('./prueba/carpeta1/carpeta1_prueba.md').then((element) => {
+    isValidated('./prueba/carpeta1/carpeta1_prueba.md').then((element) => {
       expect(element).toEqual(objectLinkAtribValidated);
       done();
     });

@@ -31,16 +31,16 @@ const printStatsValidatedOption = (arrayObject) => {
   return `${resultStatsOption}\nBroken: ${arrayAllOk.length}`;
 };
 
-const validate = (path, options, extra) => {
-  if (options === '--validate') {
-    if (extra === '--stats') {
+const validate = (path, options1, options2) => {
+  if (options1 === '--validate') {
+    if (options2 === '--stats') {
       return mdLinks(path, { validate: true })
         .then((arrayObj) => printStatsValidatedOption(arrayObj));
     }
     return mdLinks(path, { validate: true }).then((arrayObj) => printObjectValidated(arrayObj));
   }
-  if (options === '--stats') {
-    if (extra === '--validate') {
+  if (options1 === '--stats') {
+    if (options2 === '--validate') {
       return mdLinks(path, { validate: true })
         .then((arrayObj) => printStatsValidatedOption(arrayObj));
     }
@@ -52,12 +52,12 @@ const validate = (path, options, extra) => {
 // const pathName =
 // 'C:/Users/REET-PC/Documents/Claudia/laboratoria/LIM012-fe-md-links/prueba/prueba.md';
 const pathName = process.argv[2];
-const options = process.argv[3];
-const extra = process.argv[4];
+const options1 = process.argv[3];
+const options2 = process.argv[4];
 // validate(pathName, options);
 
 const { log } = console;
-validate(pathName, options, extra).then((response) => log(response));
+validate(pathName, options1, options2).then((response) => log(response));
 
 module.exports = {
   printObject,

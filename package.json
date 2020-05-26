@@ -3,13 +3,8 @@
   "version": "1.0.0",
   "description": "libreria y cli",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  
   "scripts": {
     "test": "jest --verbose --coverage"
-  
   },
   "repository": {
     "type": "git",

@@ -3,8 +3,8 @@ const fs = require('fs');
 const marked = require('marked');
 const fetch = require('node-fetch'); // previamente instalar npm install node-fetch --save
 // la ruta es absoluta?
-const pathAbsolute = (routePath) => path.isAbsolute(routePath);
-// retorna la ruta absoluta
+const pathAbsolute = (routePath) => path.isAbsolute(routePath); // es una expression xq es una linea
+// retorna la ruta absoluta , es una expression
 const getAbsolute = (routePath) => (pathAbsolute(routePath) ? routePath : path.resolve(routePath));
 // es un archivo?
 const isFile = (routePath) => fs.statSync(routePath).isFile();
@@ -25,7 +25,7 @@ const filesMD = (routePath) => {
       arrayFilesMD = arrayFilesMD.concat(directoryFilesMD);
     });
   }
-  return arrayFilesMD;
+  return arrayFilesMD; // statement if-else es una sentencia
 };
 
 // lee el path
